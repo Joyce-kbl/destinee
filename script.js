@@ -1,0 +1,101 @@
+// CONFIGURATION DES MÉDIAS
+const medias = [
+    {type: 'img', url: 'img01.jpg'},
+    {type: 'img', url: 'img02.jpg'},
+    {type: 'img', url: 'img03.jpg'},
+    {type: 'img', url: 'img1.jpg'}, 
+     {type: 'video', url: 'vid1.mp4'},
+    {type: 'img', url: 'img2.jpg'},
+    {type: 'img', url: 'img3.jpg'},
+    {type: 'img', url: 'img4.jpg'},
+    {type: 'video', url: 'vid3.mp4'},
+      {type: 'video', url: 'vid4.mp4'},
+    {type: 'img', url: 'img6.jpg'},
+     {type: 'img', url: 'img5.jpg'},
+    {type: 'img', url: 'img8.jpg'},
+    {type: 'img', url: 'img9.jpg'},
+    {type: 'img', url: 'im7.jpg'},
+     {type: 'img', url: 'img10.jpg'},
+      {type: 'img', url: 'img11.jpg'},
+     {type: 'img', url: 'img12.jpg'},
+     {type: 'img', url: 'img13.jpg'},
+     {type: 'img', url: 'img14.jpg'},
+     {type: 'video', url: 'vid5.mp4'},
+    {type: 'img', url: 'img15.jpg'},
+    {type: 'img', url: 'img16.jpg'},
+     {type: 'video', url: 'vid7.mp4'},
+    {type: 'img', url: 'img17.jpeg'},
+    {type: 'video', url: 'img18.MP4'},
+    {type: 'img', url: 'img19.jpeg'},
+    {type: 'img', url: 'im17.jpg'},
+    {type: 'img', url: 'img20.jpeg'},
+    {type: 'video', url: 'vid8.mp4'},
+   
+];
+
+let currentIndex = 0;
+
+// 1. VÉRIFICATION ACCÈS
+function verifierAcces() {
+    const reponse = document.getElementById('passwordInput').value.toLowerCase();
+    if(reponse === "primla") {
+        document.getElementById('login-overlay').style.display = 'none';
+        document.getElementById('welcome-popup').style.display = 'flex';
+    } else {
+        alert("Oups... réfléchis encore avec ton cœur ❤️");
+    }
+}
+
+// 2. FERMER L'ACCUEIL ET LANCER LE CADEAU
+function fermerAccueil() {
+    document.getElementById('welcome-popup').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+    lancerDiaporama();
+}
+
+// 3. DIAPORAMA AUTOMATIQUE
+function lancerDiaporama() {
+    const container = document.getElementById('media-container');
+    if (medias.length === 0) return;
+    
+    const item = medias[currentIndex];
+    container.innerHTML = "";
+
+    if(item.type === 'img') {
+        const img = document.createElement('img');
+        img.src = item.url;
+        img.className = "fade-media";
+        container.appendChild(img);
+        setTimeout(prochainMedia, 4000); 
+    } else {
+        const vid = document.createElement('video');
+        vid.src = item.url;
+        vid.autoplay = true;
+        vid.muted = true; // Obligatoire pour l'autoplay sur bcp de navigateurs
+        vid.className = "fade-media";
+        vid.onended = prochainMedia;
+        container.appendChild(vid);
+    }
+}
+
+function prochainMedia() {
+    currentIndex = (currentIndex + 1) % medias.length;
+    lancerDiaporama();
+}
+
+// 4. MENU
+function openNav() { document.getElementById("mySidenav").style.width = "250px"; }
+function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
+
+// 5. APPARITION DES PHRASES AU SCROLL
+window.addEventListener('scroll', () => {
+    const texts = document.querySelectorAll('.reveal-text');
+    const triggerBottom = window.innerHeight / 5 * 4;
+
+    texts.forEach(text => {
+        const textTop = text.getBoundingClientRect().top;
+        if(textTop < triggerBottom) {
+            text.classList.add('visible');
+        }
+    });
+});

@@ -1,0 +1,307 @@
+:root {
+    --val-red: #d00000;
+    --val-black: #050505;
+    --val-grey: #1a1a1a;
+}
+
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background-color: var(--val-black);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* OVERLAYS */
+.overlay {
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: linear-gradient(135deg, var(--val-black), var(--val-red));
+    z-index: 1000;
+    display: flex; justify-content: center; align-items: center; text-align: center;
+}
+
+.login-box, .welcome-box {
+    background: var(--val-grey);
+    padding: 30px;
+    width: 85%;
+    max-width: 400px;
+    border-radius: 20px;
+    border: 2px solid var(--val-red);
+    box-shadow: 0 0 30px var(--val-red);
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--val-red);
+    color: white;
+    margin: 15px 0;
+    outline: none;
+    text-align: center;
+    font-size: 16px; /* Empêche le zoom auto sur iPhone */
+}
+
+button {
+    background: var(--val-red);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* DIAPORAMA RESPONSIVE */
+.slideshow-container {
+    height: 70vh; /* Hauteur adaptée mobile */
+    width: 100%;
+    background: radial-gradient(circle, #2b0000 0%, #050505 100%); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 2px solid var(--val-red);
+}
+
+.fade-media {
+    max-width: 95%; 
+    max-height: 95%;
+    object-fit: contain; /* Affiche l'image entière sans couper */
+    box-shadow: 0 0 25px rgba(208, 0, 0, 0.4);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* TEXTE DÉFILANT RESPONSIVE */
+.scrolling-text-container { padding: 50px 10px; text-align: center; }
+
+.reveal-text {
+    font-size: 1.4rem; /* Plus petit sur mobile */
+    margin: 100px 0;   /* Espace équilibré */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+@media (min-width: 768px) {
+    .reveal-text { font-size: 26px; margin: 150px 0; }
+}
+
+.reveal-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+    color: var(--val-red);
+}
+
+/* DESIGN CONTRAT MOBILE */
+.contrat-scroll {
+    background: rgba(10, 10, 10, 0.95);
+    max-width: 800px;
+    width: 90%; /* S'adapte à l'écran */
+    padding: 30px 20px;
+    border: 2px solid #d00000;
+    border-radius: 10px;
+}
+
+.signatures-pacte {
+    display: flex;
+    flex-direction: column; /* Colonne sur mobile */
+    gap: 40px;
+    margin-top: 50px;
+}
+
+@media (min-width: 768px) {
+    .signatures-pacte { flex-direction: row; justify-content: space-between; }
+}
+
+/* Animations & Menu */
+.heartbeat { font-size: 50px; color: var(--val-red); animation: beat 1s infinite; }
+@keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+.menu-trigger {
+    font-size: 18px; position: fixed; top: 15px; left: 15px; z-index: 400;
+    background: var(--val-red); color: white; padding: 8px 15px; border-radius: 20px;
+}
+/* SLIDESHOW */
+.slideshow-container {
+    height: 60vh; /* Réduit un peu la hauteur sur mobile pour laisser voir le début du texte */
+    width: 100%;
+    background: radial-gradient(circle, #2b0000 0%, #050505 100%); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 2px solid var(--val-red);
+}
+
+.fade-media {
+    max-width: 95%; /* Évite que l'image touche les bords */
+    max-height: 90%;
+    width: auto;
+    height: auto;
+    object-fit: contain; 
+    box-shadow: 0 0 20px rgba(208, 0, 0, 0.4);
+    border-radius: 8px; /* Adoucit les coins sur mobile */
+}
+
+/* Ajustement de l'image pour voir toute la photo */
+.fade-media {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Affiche toute l'image sans couper */
+    box-shadow: 0 0 30px rgba(208, 0, 0, 0.4); /* Petite lueur rouge autour de la photo */
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* REVEAL TEXT ON SCROLL */
+.reveal-text {
+    font-size: 1.3rem; /* Taille adaptative */
+    margin: 80px 0;    /* Espace réduit pour mobile */
+    padding: 0 15px;   /* Évite que le texte touche les bords */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+@media (min-width: 768px) {
+    .reveal-text {
+        font-size: 26px;
+        margin: 150px 0;
+    }
+}
+
+/* MENU LATÉRAL */
+.sidenav {
+    height: 100%; width: 0; position: fixed; z-index: 500;
+    top: 0; left: 0; background-color: #000;
+    overflow-x: hidden; transition: 0.5s; padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 32px; text-decoration: none; font-size: 25px;
+    color: var(--val-red); display: block;
+}
+
+.menu-trigger {
+    font-size: 20px; cursor: pointer; position: fixed;
+    top: 20px; left: 20px; z-index: 400;
+    background: var(--val-red); color: white;
+    padding: 5px 15px; border-radius: 20px;
+}
+
+.heartbeat { font-size: 50px; color: var(--val-red); animation: beat 1s infinite; }
+@keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+/* --- DESIGN SPÉCIFIQUE DU CONTRAT --- */
+.page-contrat {
+    background: linear-gradient(to bottom, #000000, #1a0000); /* Dégradé noir vers rouge très sombre */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.contrat-scroll {
+    background: rgba(10, 10, 10, 0.95);
+    max-width: 800px;
+    width: 100%;
+    padding: 50px;
+    border: 2px solid #d00000; /* Bordure rouge passion */
+    box-shadow: 0 0 50px rgba(208, 0, 0, 0.3); /* Lueur rouge */
+    border-radius: 10px;
+    text-align: left;
+}
+
+.titre-pacte {
+    color: #d00000;
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+.date {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    margin-bottom: 40px;
+}
+
+.clause-art {
+    margin-bottom: 30px;
+    border-left: 3px solid #d00000;
+    padding-left: 20px;
+}
+
+.clause-art h3 {
+    color: #d00000;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.clause-art p {
+    color: #eee;
+    line-height: 1.6;
+    font-size: 18px;
+}
+
+.signatures-pacte {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+
+.sign {
+    text-align: center;
+    width: 40%;
+}
+
+.ligne {
+    height: 1px;
+    background: #d00000;
+    margin-top: 10px;
+}
+
+.bouton-retour {
+    display: block;
+    margin: 40px auto 0;
+    width: fit-content;
+    color: #d00000;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid #d00000;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.bouton-retour:hover {
+    background: #d00000;
+    color: white;
+}
+.login-box {
+    width: 85%;
+    max-width: 350px;
+    padding: 25px;
+}
+
+input {
+    width: 100%; /* Prend toute la largeur de la boîte */
+    font-size: 16px; /* Évite le zoom automatique sur iPhone */
+}

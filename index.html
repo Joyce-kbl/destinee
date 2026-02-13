@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MonCadeau - Pour toi ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="login-overlay" class="overlay">
+        <div class="login-box">
+            <i class="fas fa-heart heartbeat"></i>
+            <h2>Question de sécurité ❤️</h2>
+            <p>Comment elle s'appelle ?</p>
+            <input type="text" id="passwordInput" placeholder="Ta réponse...">
+            <button onclick="verifierAcces()">Entrer dans mon cœur</button>
+        </div>
+    </div>
+
+    <div id="welcome-popup" class="overlay" style="display:none;">
+        <div class="welcome-box">
+            <div class="floating-heart">❤️</div>
+            <h1>Coucou ma femme, ma Destinée</h1>
+            <button onclick="fermerAccueil()">Découvrir mon cadeau</button>
+        </div>
+    </div>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">Accueil</a>
+        <a href="contrat.html">Notre Contrat</a>
+    </div>
+
+    <span class="menu-trigger" onclick="openNav()">&#9776; Menu</span>
+
+    <main id="main-content" style="display:none;">
+        <header class="slideshow-container" id="media-container">
+            </header>
+
+        <div class="scrolling-text-container">
+            <p class="reveal-text">Chaque photo garde une trace de ton chemin</p>
+            <p class="reveal-text">Chaque photo raconte un pas</p>
+            <p class="reveal-text">De ta naissance</p>
+            <p class="reveal-text"> A la jeune fille que tu es aujourd'hui</p>
+            <p class="reveal-text">Te voir devenir toi</p>
+            <p class="reveal-text">Est la plus belle des histoires</p>
+            <p class="reveal-text">Et moi ma vie</p>
+            <p class="reveal-text">je vois la personne incroyable que tu es devenue</p>
+            <p class="reveal-text">Femme aux multiples talents</p>
+            <p class="reveal-text">Femme douce</p>
+            <p class="reveal-text">L'amour de ma vie</p>
+            <p class="reveal-text">La maman de mes enfants</p>
+            <p class="reveal-text">Maaaaaamaaaaaaaaaa</p>
+            <p class="reveal-text">Ma partenaire</p>
+            <p class="reveal-text">Ma confidente</p>
+            <p class="reveal-text">Mon soutien</p>
+            <p class="reveal-text">Le plus bel amour que je pouvais espérer</p>
+            <p class="reveal-text">En ce jour, </p>
+            <p class="reveal-text">Je remercie encore le Seigneur</p>
+            <p class="reveal-text">Pour cette belle personne que j'ai rencontré</p>
+            <p class="reveal-text">et c'est toi</p>
+            <p class="reveal-text">Tu es, et restera ma meilleure rencontre</p>
+            <p class="reveal-text">Tu compte énormement pour moi</p>
+            <p class="reveal-text">Merci d'être cette source de motivation pour moi</p>
+            <p class="reveal-text">J'aimerai tant devenir comme toi</p>
+            <p class="reveal-text">Taprésence ulimine ma vie</p>
+            <p class="reveal-text">Et chaque jour à tes côtés est mon plus beau cadeau</p>
+            <p class="reveal-text">Que ton sourire ne te quitte jamais</p>
+            <p class="reveal-text">Ta voix me rassure</p>
+            <p class="reveal-text">Ton amour me rend plus fort</p>
+            <p class="reveal-text">Je t'aime infiniment</p>
+            <p class="reveal-text">Tu es mon bonheur</p>
+            <p class="reveal-text">Et c'est avec toi que j'aimerai partager ma vie</p>
+            <p class="reveal-text">Et fonder une famille</p>
+            <p class="reveal-text">En cette Saint-Valentin</p>
+            <p class="reveal-text">Je veux te redire </p>
+            <p class="reveal-text">Combien je t'aime</p>
+            <p class="reveal-text">Et je suis fier d'être ton mari</p>
+            <p class="reveal-text">Merci de faire partir de ma vie</p>
+            <p class="reveal-text">Ma femme Dede de njosh</p>
+            <p class="reveal-text">Je t'aime plus que les mots ne peuvent le dire.</p>
+            <p class="reveal-text">Bonne Saint-Valentin Mon amour.</p>
+            <div class="final-heart">❤️</div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
