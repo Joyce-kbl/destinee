@@ -37,7 +37,10 @@ let currentIndex = 0;
 
 // 1. VÉRIFICATION ACCÈS
 function verifierAcces() {
-    const reponse = document.getElementById('passwordInput').value.toLowerCase();
+    const inputField = document.getElementById('passwordInput');
+    if (!inputField) return;
+    
+    const reponse = inputField.value.toLowerCase().trim();
     if(reponse === "primla") {
         document.getElementById('login-overlay').style.display = 'none';
         document.getElementById('welcome-popup').style.display = 'flex';
@@ -56,7 +59,7 @@ function fermerAccueil() {
 // 3. DIAPORAMA AUTOMATIQUE
 function lancerDiaporama() {
     const container = document.getElementById('media-container');
-    if (medias.length === 0) return;
+    if (!container || medias.length === 0) return;
     
     const item = medias[currentIndex];
     container.innerHTML = "";
@@ -67,17 +70,22 @@ function lancerDiaporama() {
         img.className = "fade-media";
         container.appendChild(img);
         setTimeout(prochainMedia, 4000); 
-    } } else {
+    } else {
         const vid = document.createElement('video');
         vid.src = item.url;
         vid.autoplay = true;
         vid.muted = true; 
-        vid.playsInline = true; // <-- AJOUTE CETTE LIGNE ABSOLUMENT
-        vid.setAttribute('playsinline', ''); // Pour une compatibilité maximale sur iPhone
+        vid.playsInline = true; // Pour iPhone
+        vid.setAttribute('playsinline', ''); // Double sécurité iPhone
         vid.className = "fade-media";
         vid.onended = prochainMedia;
         container.appendChild(vid);
-    }
+        
+        // Sécurité si la vidéo ne se lance pas
+        vid.play().catch(e => {
+            console.log("Lecture auto bloquée, passage à la suite");
+            setTimeout(prochainMedia, 3000);
+        });
     }
 }
 
@@ -101,6 +109,6 @@ window.addEventListener('scroll', () => {
             text.classList.add('visible');
         }
     });
-
 });
+
 
