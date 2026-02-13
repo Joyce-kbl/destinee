@@ -67,14 +67,17 @@ function lancerDiaporama() {
         img.className = "fade-media";
         container.appendChild(img);
         setTimeout(prochainMedia, 4000); 
-    } else {
+    } } else {
         const vid = document.createElement('video');
         vid.src = item.url;
         vid.autoplay = true;
-        vid.muted = true; // Obligatoire pour l'autoplay sur bcp de navigateurs
+        vid.muted = true; 
+        vid.playsInline = true; // <-- AJOUTE CETTE LIGNE ABSOLUMENT
+        vid.setAttribute('playsinline', ''); // Pour une compatibilité maximale sur iPhone
         vid.className = "fade-media";
         vid.onended = prochainMedia;
         container.appendChild(vid);
+    }
     }
 }
 
@@ -100,3 +103,4 @@ window.addEventListener('scroll', () => {
     });
 
 });
+
